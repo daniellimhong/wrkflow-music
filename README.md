@@ -1,39 +1,56 @@
-## Dependencies
+## Checklist
+### Server Requirements
+1. MongoDB Models
+2. TypeDefs (Schemas)
+3. Resolvers (Controller)
 
-### Server
-- express
-- bcrypt
-- mongodb/mongoose
-- dotenv
 
-### Client
+## Client
+### Dependencies
 - react
 - react router
 - material ui 
 - React player
-- youtube-search
 - Jest 
 
+### Routes
+- Landing Page (check if already loggedin, local storage)
+- Main App
 
-## Checklist
-1. Set up file structure for server & Client
-2. Set up server/express/env & connect database
-3. Set up
+## Server 
+### Dependencies
+- express
+- bcrypt
+- mongodb/mongoose
+- dotenv
+- apollo-server-express
+- graphql
 
-## Database
+### Endpoints
+- CHECK GRAPHQL STUFF
 
-### Models
+### Database
 
-#### Users Schema:
+#### Models
+
+##### Users Schema:
 - User ID (auto)
 - Username
 - Password
 - Email
 - Playlists = [Playlist's ids]
 
-#### Playlist Schema:
+##### Playlist Schema:
+- Creator ID 
 - Playlist Name
 - Description
-- URLS
+- Urls = [URLS to render on front end]
 
+## Post MVP Features:
+- Embeded Youtube Search feature or subwindow modal?
 
+## Notes For Future Reference:
+- Resolver = like a controller, handling the logic
+    - Uses the models, user & playlist to work with the database
+- TypeDefs (Schema) = like routes, defines the queries & mutations 
+- Models = defining the data to be used 
