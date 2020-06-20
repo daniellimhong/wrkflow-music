@@ -1,13 +1,28 @@
 import { User, Playlist } from "../models/collections";
+import validator from 'validator';
 import bcrypt from "bcrypt";
 
 module.exports = {
   registerUser: async ({ userInput }, req, res) => {
+    const errors = []
+    if (!validator.isEmail(userInput.email)){
+        errors.push({ message: 'Please enter a valid email'})
+    }
+    if (validator.isEmpty(userInput.password)){
+        errors.push({ message: 'Please enter a valid password'})
+    }
+    if (errors.length > 0){
+        const err = new Error("Invalid input")
+        err.data = errors;
+        throw err;
+    }
+
     const existingUser = await User.findOne({ username: userInput.username });
     if (existingUser) {
       const err = new Error("Email already exists");
       throw err;
     }
+
     const hashedPassword = await bcrypt.hash(userInput.password, 12);
     const user = new User({
       username: userInput.username,
