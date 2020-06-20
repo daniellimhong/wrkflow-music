@@ -4,6 +4,11 @@
 2. TypeDefs (Schemas)
 3. Resolvers (Controller)
 
+### Currently: 
+- createPlaylist resolver is creating playlist but not pushing to user's playlist array
+- Still need to finish the rest of the resolvers but login works, register user works, and create playlist is halfway there
+- Will port over jwt to sessions
+
 
 ## Client
 ### Dependencies

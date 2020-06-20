@@ -12,12 +12,17 @@ module.exports = buildSchema(`
     type Playlist {
         _id: ID!
         playlistName: String!
-        description: String!
+        description: String
         urls: [String]
     }
 
+    type AuthData {
+        token: String!
+        userId: String!
+    }
+
     type RootQuery {
-        test: String!
+        login(username: String!, password: String!): AuthData!
         users: [User]
         playlists: [Playlist]
     }
@@ -28,8 +33,14 @@ module.exports = buildSchema(`
         email: String!
     }
 
+    input PlaylistInputData {
+        playlistName: String!
+        description: String
+    }
+
     type RootMutation {
         registerUser(userInput: UserInputData): User
+        createPlaylist(playlistInput: PlaylistInputData): Playlist
     }
 
     schema {

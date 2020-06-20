@@ -6,11 +6,11 @@ const playlistSchema = new mongoose.Schema({
     required: true,
   },
   description: {
-    type: String,
-    required: true,
-  },
-  urls: [{
     type: String
+  },
+  media: [{
+    title: String,
+    url: String
   }]
 });
 
@@ -35,12 +35,7 @@ const userSchema = new mongoose.Schema({
       },
     },
   },
-  playlists: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'playlist'
-    }
-  ],
+  playlists: [playlistSchema],
 }); 
 
 const user = mongoose.model("user", userSchema);
